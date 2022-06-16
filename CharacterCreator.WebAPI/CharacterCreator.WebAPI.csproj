@@ -10,4 +10,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CharacterCreator.Data\CharacterCreator.Data.csproj" />
+    <ProjectReference Include="..\CharacterCreator.Models\CharacterCreator.Models.csproj" />
+    <ProjectReference Include="..\CharacterCreator.Services\CharacterCreator.Services.csproj" />
+  </ItemGroup>
+
 </Project>
