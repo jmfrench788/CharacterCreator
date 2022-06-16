@@ -11,7 +11,5 @@ public class ApplicationDbContext : DbContext
             {    
             }
         public DbSet<CharacterEntity> Character { get; set; }
-        public DbSet<SkillEntity> Skill { get; set; }
-        public DbSet<StoryEntity> Story { get; set; }
-        public DbSet<TeamEntity> Team { get; set; }
+        
     }
