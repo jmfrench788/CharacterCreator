@@ -10,6 +10,8 @@ public class ApplicationDbContext : DbContext
             : base(options)
             {    
             }
+
+        
         public DbSet<CharacterEntity> Character { get; set; }
         public DbSet<SkillEntity> Skill { get; set; }
         public DbSet<StoryEntity> Story { get; set; }
