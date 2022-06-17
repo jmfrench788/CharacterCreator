@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
     public class TeamListDTO
     {
-           public int Id {get;set;}
+        public int Id {get;set;}
         public string TeamName {get;set;}
         public List<CharacterEntity> Characters {get;set;}
     }

@@ -4,9 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
-    public class TeamCreateDTO
+    public class StoryServices
     {
-        public int Id {get;set;}
-        public string TeamName {get;set;}
+        //Create
 
+        //Get by Story ID
+
+        //Update
+
+        //Delete
     }

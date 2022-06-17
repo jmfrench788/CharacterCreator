@@ -11,5 +11,7 @@ public class ApplicationDbContext : DbContext
             {
                 
             }
+
+            public DbSet<TeamEntity> Team {get;set;}
         
     }
