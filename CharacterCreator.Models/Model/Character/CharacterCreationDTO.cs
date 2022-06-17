@@ -8,4 +8,6 @@ using System.Threading.Tasks;
         public string Name { get; set; }
         public Race Race { get; set; }
         public Class Class { get; set; }
+        public int TeamId { get; set; }
+        // public int StoryId { get; set; }
     }

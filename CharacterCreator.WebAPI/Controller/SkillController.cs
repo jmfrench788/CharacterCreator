@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
     [ApiController]
     [Route("[controller]")]
-    public class SkillController : Controller
+    public class SkillController : ControllerBase
     {
         private readonly ILogger<SkillController> _logger;
 
@@ -15,14 +15,5 @@ using Microsoft.AspNetCore.Mvc;
             _logger = logger;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View("Error!");
-        }
+        
     }

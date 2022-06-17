@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
     [ApiController]
     [Route("api/[controller]")]
-    public class CharacterController : Controller
+    public class CharacterController : ControllerBase
     {
         private readonly ICharacterService _characterService;
         private readonly ILogger<CharacterController> _logger;

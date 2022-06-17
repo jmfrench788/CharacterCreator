@@ -17,10 +17,10 @@ public class CharacterEntity
         public Class Class { get; set; }
         public List<SkillEntity> Skills { get; set; }
         [ForeignKey(nameof(Team))]
-        public int TeamId { get; set; }
+        public int? TeamId { get; set; }
         public virtual TeamEntity  Team { get; set; }
-        [ForeignKey(nameof(Story))]
-        public int StoryId { get; set; }
-        public virtual StoryEntity  Story { get; set; }
+        // [ForeignKey(nameof(Story))]
+        // public int? StoryId { get; set; }
+        // public virtual StoryEntity  Story { get; set; }
         // public int StrengthStat { get; set; }
     }
