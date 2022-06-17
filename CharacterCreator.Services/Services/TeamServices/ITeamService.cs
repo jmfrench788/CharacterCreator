@@ -15,4 +15,5 @@ using System.Threading.Tasks;
         Task<bool> UpdateTeamAsync(TeamUpdateDTO request);
 
         //Delete
+        Task<bool> DeleteTeamAsync(int teamId);
     }
