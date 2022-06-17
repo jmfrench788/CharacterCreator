@@ -5,24 +5,43 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class CharacterController : Controller
     {
+        private readonly ICharacterService _characterService;
         private readonly ILogger<CharacterController> _logger;
-
-        public CharacterController(ILogger<CharacterController> logger)
+        
+        public CharacterController(ILogger<CharacterController> logger, ICharacterService characterService)
         {
             _logger = logger;
+            _characterService = characterService;
         }
 
-        public IActionResult Index()
+        [HttpPost("Register")]
+        public async Task<IActionResult> CreateCharacter([FromBody] CharacterCreationDTO request)
         {
-            return View();
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var creationResult = await _characterService.CreateCharacterAsync(request);
+            if (creationResult)
+            {
+                return Ok("User was registered.");
+            }
+
+            return BadRequest("User could not be registered.");
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View("Error!");
-        }
+        // public IActionResult Index()
+        // {
+        //     return View();
+        // }
+
+        // [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        // public IActionResult Error()
+        // {
+        //     return View("Error!");
+        // }
     }
