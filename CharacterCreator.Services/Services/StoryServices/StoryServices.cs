@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
-    public class StoryServices
+    public class StoryServices : IStoryServices
     {
         //Create
 
