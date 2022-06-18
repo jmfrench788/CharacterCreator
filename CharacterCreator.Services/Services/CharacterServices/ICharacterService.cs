@@ -4,7 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
-    public interface ICharacterService 
+    public interface ICharacterService
     {
+        Task<bool> CreateCharacterAsync(CharacterCreationDTO request);
         
     }
