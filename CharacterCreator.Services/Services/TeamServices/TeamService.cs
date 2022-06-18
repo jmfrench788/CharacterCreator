@@ -45,7 +45,6 @@ using System.Threading.Tasks;
             {
                 teamEntity.TeamName = request.TeamName;
                 teamEntity.StoryId = request.StoryId;
-                //change characters
             }
 
             var numberOfChanges = await _context.SaveChangesAsync();
