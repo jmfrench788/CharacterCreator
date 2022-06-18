@@ -8,5 +8,5 @@ using System.Threading.Tasks;
         public string Name { get; set; }
         public Race Race { get; set; }
         public Class Class { get; set; }
-        public List<SkillEntity> Skill { get; set; }
+        public List<SkillEntity> Skills { get; set; }
     }
