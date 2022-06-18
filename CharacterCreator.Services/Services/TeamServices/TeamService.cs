@@ -22,7 +22,8 @@ using System.Threading.Tasks;
             TeamEntity team = new TeamEntity
             {
                 Id = teamCreateDTO.Id,
-                TeamName = teamCreateDTO.TeamName
+                TeamName = teamCreateDTO.TeamName,
+                StoryId = teamCreateDTO.StoryId
             };
 
             _context.Team.Add(team);
@@ -32,6 +33,25 @@ using System.Threading.Tasks;
 
 
         //Get by TeamID
+         public async Task<TeamDetailDTO> GetTeamByIdASync(int teamId)
+    {
+        var teamEntity = await _context.Team.FindAsync(teamId);
+        if (teamEntity is null)
+        {
+            return null;
+        }
+
+        var teamDetail = new TeamDetailDTO
+        {
+            Id = teamEntity.Id,
+            TeamName = teamEntity.TeamName,
+            StoryId = teamEntity.StoryId,
+            Characters = teamEntity.Characters
+           
+        };
+
+        return teamDetail;
+    }
 
         //Update
         public async Task<bool> UpdateTeamAsync(TeamUpdateDTO request)

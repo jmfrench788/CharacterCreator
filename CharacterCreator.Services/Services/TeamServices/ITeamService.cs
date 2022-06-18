@@ -10,6 +10,7 @@ using System.Threading.Tasks;
         Task<bool> CreateTeamAsync (TeamCreateDTO teamCreateDTO);
 
         //Get by TeamID
+        Task<TeamDetailDTO> GetTeamByIdASync(int teamId);
 
         //Update
         Task<bool> UpdateTeamAsync(TeamUpdateDTO request);
