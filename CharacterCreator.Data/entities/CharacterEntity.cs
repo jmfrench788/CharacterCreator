@@ -7,19 +7,20 @@ using System.Threading.Tasks;
 
 public class CharacterEntity
     {
+        [Key]
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
         public Race Race { get; set; }
-        public List<SkillEntity> Skills { get; set; }
-        [ForeignKey(nameof(Team))]
-        public int TeamId { get; set; }
-        public virtual TeamEntity  Team { get; set; }
-        [ForeignKey(nameof(Story))]
-        public int StoryId { get; set; }
-        public virtual StoryEntity  Story { get; set; }
-        // public int StrengthStat { get; set; }
         [Required]
         public Class Class { get; set; }
+        public List<SkillEntity> Skills { get; set; }
+        [ForeignKey(nameof(Team))]
+        public int? TeamId { get; set; }
+        public virtual TeamEntity  Team { get; set; }
+        // [ForeignKey(nameof(Story))]
+        // public int? StoryId { get; set; }
+        // public virtual StoryEntity  Story { get; set; }
+        // public int StrengthStat { get; set; }
     }
