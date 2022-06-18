@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CharacterCreator.Services.Services.Team
-{
-    public interface ITeamService
+
+    public class TeamCreateDTO
     {
-        
+        public int Id {get;set;}
+        public string TeamName {get;set;}
+
     }
-}

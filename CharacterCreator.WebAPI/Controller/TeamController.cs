@@ -6,23 +6,49 @@ using Microsoft.AspNetCore.Mvc;
 
     [ApiController]
     [Route("[controller]")]
-    public class TeamController : Controller
+    public class TeamController : ControllerBase
     {
-        private readonly ILogger<TeamController> _logger;
+       private readonly ITeamService _teamService;
 
-        public TeamController(ILogger<TeamController> logger)
+        public TeamController(ITeamService teamService)
         {
-            _logger = logger;
+            _teamService = teamService;
         }
 
-        public IActionResult Index()
+        [HttpPost]
+        public async Task<IActionResult> CreateTeam([FromBody] TeamCreateDTO request)
         {
-            return View();
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if(await _teamService.CreateTeamAsync(request))
+            {
+                return Ok("Team was created.");
+            }
+
+            return BadRequest("Team could not be created.");
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        [HttpPut]
+        public async Task<IActionResult> UpdateTeamById([FromBody] TeamUpdateDTO request)
         {
-            return View("Error!");
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+                return await _teamService.UpdateTeamAsync(request) 
+                    ? Ok("Team was updated.") : BadRequest("Team could not be updated.");
         }
+
+        [HttpDelete]
+        [Route("{teamId}")]
+        public async Task<IActionResult> DeleteTeam([FromRoute] int teamId)
+        {
+            return await  _teamService.DeleteTeamAsync(teamId) 
+                ? Ok($"Team {teamId} was deleted.") : BadRequest($"Team {teamId} could not be deleted");
+        }
+
+        //Get
     }
