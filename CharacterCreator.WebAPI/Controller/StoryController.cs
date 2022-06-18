@@ -8,11 +8,26 @@ using Microsoft.AspNetCore.Mvc;
     [Route("[controller]")]
     public class StoryController : ControllerBase
     {
-        private readonly ILogger<StoryController> _logger;
+         private readonly IStoryServices _storyService;
 
-        public StoryController(ILogger<StoryController> logger)
+        public StoryController(IStoryServices storyService)
         {
-            _logger = logger;
+            _storyService = storyService;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateStory([FromBody] StoryCreateDTO request)
+        {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if(await _storyService.CreateStoryAsync(request))
+            {
+                return Ok("Story was created.");
+            }
+
+            return BadRequest("Story could not be created.");
         }
 
     }
