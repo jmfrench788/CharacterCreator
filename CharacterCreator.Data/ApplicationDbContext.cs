@@ -11,5 +11,6 @@ public class ApplicationDbContext : DbContext
             {
                 
             }
-        
+            public DbSet<SkillEntity> Skill {get; set;}
+            
     }
