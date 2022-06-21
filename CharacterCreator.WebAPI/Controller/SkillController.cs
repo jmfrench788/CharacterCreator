@@ -33,5 +33,18 @@ using Microsoft.AspNetCore.Mvc;
             return BadRequest("Failed to add skill");
         }
 
+        [HttpPut("Edit Skills")]
+            public async Task<IActionResult> EditSkill([FromBody] SkillEditDTO request)
+            {
+                if(!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                return await _skillService.EditSkillAsync(request)
+                ? Ok("Skills were updated.") : BadRequest("Skills could not be updated.");
+            }
+        
+
         
     }
