@@ -18,6 +18,7 @@ public class SkillService : ISkillService
             var skillEntity = new SkillEntity
             {
                 Id = _skillId,
+                CharacterId = request.CharacterId,
                 Name = request.Name,
                 Description = request.Description,
             };
@@ -31,7 +32,7 @@ public class SkillService : ISkillService
             var skillEntity = new SkillEntity
             {
                 Name = request.Name,
-                Description = request.Description,
+                Description = request.Description
             };
             await _context.Skill.AddAsync(skillEntity);
             var numberOfChanges = await _context.SaveChangesAsync();
