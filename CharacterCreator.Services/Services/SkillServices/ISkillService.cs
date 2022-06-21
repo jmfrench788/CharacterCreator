@@ -6,4 +6,5 @@ using System.Threading.Tasks;
     public interface ISkillService
     {
         Task<bool> CreateSkillAsync(SkillCreationDTO request);
+        Task<bool> EditSkillAsync(SkillEditDTO request);
     }

@@ -25,4 +25,16 @@ public class SkillService : ISkillService
         var numberOfChanges = await _context.SaveChangesAsync();
         return numberOfChanges == 1;
         }
+
+        public async Task<bool> EditSkillAsync(SkillEditDTO request)
+        {
+            var skillEntity = new SkillEntity
+            {
+                Name = request.Name,
+                Description = request.Description,
+            };
+            await _context.Skill.AddAsync(skillEntity);
+            var numberOfChanges = await _context.SaveChangesAsync();
+            return numberOfChanges == 1;
+        }
     }
