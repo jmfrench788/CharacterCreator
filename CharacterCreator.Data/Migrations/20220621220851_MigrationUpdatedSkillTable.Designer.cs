@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CharacterCreator.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220617014228_MigrationDeletedStoryId")]
-    partial class MigrationDeletedStoryId
+    [Migration("20220621220851_MigrationUpdatedSkillTable")]
+    partial class MigrationUpdatedSkillTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

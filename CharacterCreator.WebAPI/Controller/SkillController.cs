@@ -11,9 +11,10 @@ using Microsoft.AspNetCore.Mvc;
         private readonly ISkillService _skillService;
         private readonly ILogger<SkillController> _logger;
 
-        public SkillController(ILogger<SkillController> logger)
+        public SkillController(ILogger<SkillController> logger, ISkillService skillService)
         {
             _logger = logger;
+            _skillService = skillService;
         }
 
         [HttpPost("Add Skills")]
