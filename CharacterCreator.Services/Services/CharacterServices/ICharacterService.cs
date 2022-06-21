@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CharacterCreator.Services.Services.CharacterServices
-{
+
     public interface ICharacterService
     {
-        
+        Task<bool> CreateCharacterAsync(CharacterCreationDTO request);
+        Task<CharacterDetailDTO> GetCharacterByIdASync (int characterId);
     }
-}

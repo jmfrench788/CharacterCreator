@@ -9,7 +9,5 @@ using System.Threading.Tasks;
          public int Id {get;set;}
         public string TeamName {get;set;}
         public int StoryId {get;set;}
-        public virtual StoryEntity Story {get;set;}
-
         public List<CharacterEntity> Characters {get;set;}
     }

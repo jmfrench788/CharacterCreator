@@ -6,23 +6,28 @@ using Microsoft.AspNetCore.Mvc;
 
     [ApiController]
     [Route("[controller]")]
-    public class StoryController : Controller
+    public class StoryController : ControllerBase
     {
-        private readonly ILogger<StoryController> _logger;
+         private readonly IStoryServices _storyService;
 
-        public StoryController(ILogger<StoryController> logger)
+        public StoryController(IStoryServices storyService)
         {
-            _logger = logger;
+            _storyService = storyService;
         }
 
-        public IActionResult Index()
+        [HttpPost]
+        public async Task<IActionResult> CreateStory([FromBody] StoryCreateDTO request)
         {
-            return View();
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            if(await _storyService.CreateStoryAsync(request))
+            {
+                return Ok("Story was created.");
+            }
+
+            return BadRequest("Story could not be created.");
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View("Error!");
-        }
     }
