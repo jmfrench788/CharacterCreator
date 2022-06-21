@@ -34,14 +34,16 @@ using Microsoft.AspNetCore.Mvc;
             return BadRequest("User could not be registered.");
         }
 
-        // public IActionResult Index()
-        // {
-        //     return View();
-        // }
+        [HttpGet("{characterId:int}")]
+        public async Task<IActionResult> GetById([FromRoute] int characterId)
+        {
+            var characterDetail = await _characterService.GetCharacterByIdASync(characterId);
 
-        // [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        // public IActionResult Error()
-        // {
-        //     return View("Error!");
-        // }
+            if(characterDetail is null)
+                {
+                    return NotFound();
+                }
+            
+            return Ok(characterDetail);
+        }
     }

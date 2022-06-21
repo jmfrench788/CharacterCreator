@@ -21,4 +21,5 @@ public class SkillEntity
 
         public int CharacterId {get;set;}
         public virtual CharacterEntity Character {get;set;}
+        
     }

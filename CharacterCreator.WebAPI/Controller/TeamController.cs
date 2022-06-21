@@ -30,6 +30,20 @@ using Microsoft.AspNetCore.Mvc;
             return BadRequest("Team could not be created.");
         }
 
+        [HttpGet]
+        [Route("{teamId}")]
+        public async Task<IActionResult> GetTeamById([FromRoute] int teamId)
+        {
+            var teamDetail = await _teamService.GetTeamByIdASync(teamId);
+
+            if(teamDetail is null)
+                {
+                    return NotFound();
+                }
+            
+            return Ok(teamDetail);
+        }
+
         [HttpPut]
         public async Task<IActionResult> UpdateTeamById([FromBody] TeamUpdateDTO request)
         {

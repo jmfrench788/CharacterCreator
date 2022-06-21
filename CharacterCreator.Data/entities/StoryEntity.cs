@@ -13,8 +13,6 @@ using System.Threading.Tasks;
 
         public string StoryDescription {get;set;}
 
-        //FK Teams
-        // [ForeignKey(nameof(Team))]
         public virtual List<TeamEntity> Teams {get;set;}
         
     }
